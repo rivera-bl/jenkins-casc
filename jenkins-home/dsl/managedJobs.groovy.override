@@ -1,0 +1,10 @@
+pipelineJob('00first') {
+  definition {
+    cpsScm {
+        scm {
+            git('https://github.com/rivera-bl/jenkins-casc.git')
+        }
+      scriptPath('pipelines/00first/Jenkinsfile')
+    }
+  }
+}
