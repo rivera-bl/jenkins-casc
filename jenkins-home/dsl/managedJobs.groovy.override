@@ -1,10 +1,14 @@
 pipelineJob('00first') {
   definition {
     cpsScm {
-        scm {
-            git('https://github.com/rivera-bl/jenkins-casc.git')
+      scm {
+        git {
+          remote {
+            github('rivera-bl/jenkins-casc', 'https')
+          }
         }
       scriptPath('pipelines/00first/Jenkinsfile')
+      }
     }
   }
 }
