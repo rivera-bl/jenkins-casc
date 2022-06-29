@@ -6,7 +6,7 @@ build-timeout:latest
 cloudbees-folder:latest
 configuration-as-code:latest
 credentials-binding:latest
-docker:latest
+docker-commons:latest
 email-ext:latest
 job-dsl:latest
 git:latest
