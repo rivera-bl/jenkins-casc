@@ -26,3 +26,5 @@
 ## TODO
 
 - [x] get first pipeline as code
+- [ ] figure out how to create multiple pipelines from multiple folder, from a single groovy.override call
+    - scriptPath('pipelines/*/Jenkinsfile') doesn't work
