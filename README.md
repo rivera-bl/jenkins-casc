@@ -15,6 +15,8 @@
 
 * basically seedJob -> groovy.override -> jenkinsfile
 
+* it's important to pass the `https` to the git>remote>github line, or it will complain about missing credentials
+
 ## Resources
 
 [Blog of the Job DSL Example](https://remy-dewolf.medium.com/our-journey-to-continuous-delivery-chapter-3-automate-your-configuration-with-jenkins-dsl-1ff14d7de4c4)
