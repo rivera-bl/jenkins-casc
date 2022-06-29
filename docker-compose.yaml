@@ -7,7 +7,7 @@ services:
         ports: 
             - "8080:8080"
         # volumes:
-        #     - ./docker/jenkins-master/jobs:/var/jenkins_home/jobs
+        #     - ./jobs:/var/jenkins_home/jobs
         environment:
             - JENKINS_ADMIN_ID
             - JENKINS_ADMIN_PASSWORD
