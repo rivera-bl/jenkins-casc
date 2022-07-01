@@ -20,6 +20,7 @@ pipeline-github-lib:latest
 pipeline-stage-view:latest
 kubernetes:latest
 ssh-slaves:latest
+sonar:2.14
 timestamper:latest
 workflow-aggregator:latest
 ws-cleanup:latest
