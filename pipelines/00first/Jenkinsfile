@@ -1,17 +1,17 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                echo "Building something"
+                git 'https://github.com/PheaSoy/spring-boot-kubernetes'
             }
         }
-        stage('Test') {
+        stage('SAST') {
             steps {
                 echo "Testing"
             }
         }
-        stage('Deploy') {
+        stage('SCA') {
             steps {
                 echo "Deploying"
             }
