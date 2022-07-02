@@ -11,6 +11,7 @@ pipeline {
             SCANNER_HOME = tool 'SonarQubeScanner'
             ORGANIZATION = "rivera-bl"
             PROJECT_NAME = "spring-boot-kubernetes"
+            SONAR_TOKEN = "243b286caeaee9a5802593ecdfdc8b7e99507e20"
           }
           steps {
             withSonarQubeEnv('SonarCloudURL') {
