@@ -30,9 +30,10 @@ unclassified:
   location:
     url: http://localhost:8080/
   sonarGlobalConfiguration:
-      buildWrapperEnabled: false
+      buildWrapperEnabled: true
       installations:
-      - credentialsId: "sonarcloud"
+      - additionalProperties: "-X"
+        credentialsId: "sonarcloud"
         name: "SonarCloudURL"
         serverUrl: "https://sonarcloud.io"
         triggers:
