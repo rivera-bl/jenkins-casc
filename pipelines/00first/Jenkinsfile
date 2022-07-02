@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/PheaSoy/spring-boot-kubernetes'
+                git 'https://github.com/rivera-bl/spring-boot-kubernetes'
             }
         }
         stage('SAST') {
