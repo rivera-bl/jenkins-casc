@@ -13,7 +13,7 @@ pipeline {
             PROJECT_NAME = "spring-boot-kubernetes"
           }
           steps {
-            withSonarQubeEnv('SonarCloudURL') {
+            withSonarQubeEnv(installationName: 'SonarCloudURL', credentialsId: 'sonarcloud') {
                 sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=$ORGANIZATION \
                 -Dsonar.java.binaries=.mvn/wrapper/ \
                 -Dsonar.projectKey=$PROJECT_NAME \
