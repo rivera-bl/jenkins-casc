@@ -1,18 +1,25 @@
 version: '3'
 
 services:
-    jenkins-master:
-        container_name: jenkins-casc
-        image: jenkins-as-code:test
-        ports: 
-            - "8080:8080"
-        # volumes:
-        #     - ./jobs:/var/jenkins_home/jobs
-        environment:
-            - JENKINS_ADMIN_ID
-            - JENKINS_ADMIN_PASSWORD
-        networks:
-            - jenkins-net
+  # sonarqube:
+  #   container_name: sonarqube
+  #   image: sonarqube:9.5-community
+  #   ports:
+  #     - "9000:9000"
+  #   environment:
+  #     - SONAR_FORCEAUTHENTICATION=false
+  #   networks:
+  #     - jenkins-net
+  jenkins-master:
+    container_name: jenkins
+    image: jenkins-as-code:test
+    ports:
+      - "8080:8080"
+    environment:
+      - JENKINS_ADMIN_ID
+      - JENKINS_ADMIN_PASSWORD
+    networks:
+      - jenkins-net
 
 networks:
-    jenkins-net:
+  jenkins-net:
