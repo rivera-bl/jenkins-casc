@@ -17,6 +17,36 @@ security:
     authenticators:
     - global:
         strategy: triggeringUsersAuthorizationStrategy
+credentials:
+  system:
+    domainCredentials:
+    - credentials:
+      - string:
+          description: "Secret token from sonarcloud to be used in the sonar scanner"
+          id: "sonarcloud"
+          scope: GLOBAL
+          secret: ${SONARCLOUD_TOKEN}
 unclassified:
   location:
     url: http://localhost:8080/
+  sonarGlobalConfiguration:
+      buildWrapperEnabled: false
+      installations:
+      - credentialsId: "sonarcloud"
+        name: "SonarCloudURL"
+        serverUrl: "https://sonarcloud.io"
+        triggers:
+          skipScmCause: false
+          skipUpstreamCause: false
+tool:
+  mavenGlobalConfig:
+    globalSettingsProvider: "standard"
+    settingsProvider: "standard"
+  sonarRunnerInstallation:
+    installations:
+    - name: "SonarQubeScanner"
+      properties:
+      - installSource:
+          installers:
+          - sonarRunnerInstaller:
+              id: "4.7.0.2747"
