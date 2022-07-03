@@ -27,6 +27,11 @@
 
 * if we are going to use sonarqube we have to make sure to have at least a 5% of our total disk drive available, because it uses elasticsearch as its default database
 
+* REALLY USEFUL: we can validate the `Jenkinsfile` syntax with:
+```
+curl --user <user>:<pass> -X POST -F "jenkinsfile=<Jenkinsfile" http://localhost:8080/pipeline-model-converter/validate
+```
+
 ## DevSecOps Pipeline Example
 
 * as part of the devsecops diploma of usach, I'll build a pipeline that:
@@ -67,6 +72,7 @@ TODO: get documentation
 
 ### DependencyCheck
 
+[Arguments](https://jeremylong.github.io/DependencyCheck/dependency-check-cli/arguments.html)
 
 ## Utilities
 
@@ -86,7 +92,9 @@ TODO: get documentation
 - [x] replace tokens for one thats not tracked in our commit history
 - [x] create a credential in jenkins with CASC
   - [ ] find a way to pass secrets correctly
-- [ ] add DependencyCheck to Jenkisfile
+- [x] add DependencyCheck to Jenkisfile
+- [ ] access report of dependency check
+- [ ] move the quality gate to the sonarcloud stage
 
 - [ ] trigger pipeline automatically when there is a new commit on the repo
     - for this should contain the Jenkinsfile and the app code into one repository
