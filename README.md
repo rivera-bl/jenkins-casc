@@ -21,7 +21,7 @@
     - go to the page of the plugin, for ex. [sonarqube scanner](https://plugins.jenkins.io/sonar/) and click on the 'How to Install' box to get its name and latest version
     - or search through [this page](https://archives.jenkins.io/plugins/)
 
-* we could add sonarqube instead of sonarcloud, because in order to use the webhook and fail the pipeline through a quality gate the jenkins server has to be available from the internet
+* with sonarcloud it ain't necessary to configure a webhook, it automatically stops the pipeline if the quality gate ain met
 
 ## DevSecOps Pipeline Example
 
@@ -41,6 +41,7 @@
   - Add the Sonarqube Server location
   - Add the Sonarqube Scanner installation
 7. allow the sonarcloud `github app` to have access the repository we are going to analyze
+8. configure a quality gate for the project in sonarcloud
 
 ## Resources
 
