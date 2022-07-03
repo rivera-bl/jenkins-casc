@@ -1,15 +1,6 @@
 version: '3'
 
 services:
-  # sonarqube:
-  #   container_name: sonarqube
-  #   image: sonarqube:9.5-community
-  #   ports:
-  #     - "9000:9000"
-  #   environment:
-  #     - SONAR_FORCEAUTHENTICATION=false
-  #   networks:
-  #     - jenkins-net
   jenkins-master:
     container_name: jenkins
     image: jenkins-as-code:test

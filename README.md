@@ -23,6 +23,10 @@
 
 * with sonarcloud it ain't necessary to configure a webhook, it automatically stops the pipeline if the quality gate ain met
 
+* downsides of using sonarcloud is that we can't generate PDF reports, with sonarqube we can through a plugin
+
+* if we are going to use sonarqube we have to make sure to have at least a 5% of our total disk drive available, because it uses elasticsearch as its default database
+
 ## DevSecOps Pipeline Example
 
 * as part of the devsecops diploma of usach, I'll build a pipeline that:
@@ -78,11 +82,11 @@ TODO: get documentation
 - [x] configure sonarqube plugin in jenkins with CASC
     - sonarqube server detail (name, url)
     - sonarqube scanner install
-- [ ] add sonarcloud quality check
-
-- [ ] replace tokens for one thats not tracked in our commit history
-- [ ] create a credential in jenkins with CASC
+- [x] add sonarcloud quality check
+- [x] replace tokens for one thats not tracked in our commit history
+- [x] create a credential in jenkins with CASC
   - [ ] find a way to pass secrets correctly
+
 - [ ] trigger pipeline automatically when there is a new commit on the repo
     - for this should contain the Jenkinsfile and the app code into one repository
 - [ ] find a way to test fast and locally the pipelines
