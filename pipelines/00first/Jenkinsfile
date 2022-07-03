@@ -6,6 +6,11 @@ pipeline {
                 git 'https://github.com/rivera-bl/spring-boot-kubernetes'
             }
         }
+        stage('Build') {
+            steps {
+              sh './mvnw package'
+            }
+        }
         stage('SonarCloud') {
           environment {
             SCANNER_HOME = tool 'SonarQubeScanner'
@@ -32,7 +37,7 @@ pipeline {
             steps {
               dependencyCheck additionalArguments: '''
                   -o "./"
-                  -s "./.mvn/wrapper/maven-wrapper.jar"
+                  -s "./target/spring-boot-kubernetes-0.0.1-SNAPSHOT.jar"
                   -f "ALL"
                   --prettyPrint''', odcInstallation: 'devsecops'
 
