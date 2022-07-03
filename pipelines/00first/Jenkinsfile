@@ -21,22 +21,16 @@ pipeline {
             }
           }
         }
-        stage("Quality Gate") {
+        stage("QualityGate") {
           steps {
             timeout(time: 1, unit: 'MINUTES') {
                 waitForQualityGate abortPipeline: true
             }
           }
         }
-        stage('SCA') {
+        stage('OWASP DependencyCheck') {
             steps {
-              dependencyCheck additionalArguments: '''
-                  -o "./"
-                  -s "./"
-                  -f "ALL"
-                  --prettyPrint''', odcInstallation: 'devsecops'
-
-              dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+              dependencyCheck additionalArguments: '', odcInstallation: 'devsecops'
             }
         }
     }
