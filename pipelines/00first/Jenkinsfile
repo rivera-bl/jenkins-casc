@@ -25,10 +25,12 @@ pipeline {
                 pattern: 'dependency-check-report.xml'
               )
 
-              if (currentBuild.result == 'UNSTABLE') {
-                 unstable('UNSTABLE: Dependency check')
-              } else if (currentBuild.result == 'FAILURE') {
-                 error('FAILED: Dependency check')
+              script {
+                if (currentBuild.result == 'UNSTABLE') {
+                   unstable('UNSTABLE: Dependency check')
+                } else if (currentBuild.result == 'FAILURE') {
+                   error('FAILED: Dependency check')
+                }
               }
             }
         }
