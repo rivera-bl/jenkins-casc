@@ -29,14 +29,12 @@ pipeline {
 //          }
 //        }
         stage('OWASP DependencyCheck') {
-            steps {
-              dependencyCheck additionalArguments: '''
-                  -o "./"
-                  -s "./"
-                  -f "ALL"
-                  --prettyPrint''', odcInstallation: 'devsecops'
+            steps {  
+             withMaven(maven : 'mvn-3.6.3') {  
+              sh 'mvn dependency-check:check'  
+             }  
 
-              dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+            dependencyCheckPublisher pattern: 'dependency-check-report.xml'
             }
         }
     }
