@@ -11,6 +11,17 @@ pipeline {
               sh './mvnw package'
             }
         }
+        stage('OWASP DependencyCheck') {
+            steps {
+              dependencyCheck additionalArguments: '''
+                  -o "./"
+                  -s "./target/spring-boot-kubernetes-0.0.1-SNAPSHOT.jar"
+                  -f "ALL"
+                  --prettyPrint''', odcInstallation: 'devsecops'
+
+              dependencyCheckPublisher failedNewHigh: 1, failedTotalHigh: 1, pattern: 'dependency-check-report.xml'
+            }
+        }
         stage('SonarCloud') {
           environment {
             SCANNER_HOME = tool 'SonarQubeScanner'
@@ -26,23 +37,12 @@ pipeline {
             }
           }
         }
-//        stage("QualityGate") {
+//      stage("QualityGate") {
 //          steps {
-//            timeout(time: 1, unit: 'MINUTES') {
-//                waitForQualityGate abortPipeline: true
-//            }
+//              timeout(time: 1, unit: 'MINUTES') {
+//                  waitForQualityGate abortPipeline: true
+//              }
 //          }
-//        }
-        stage('OWASP DependencyCheck') {
-            steps {
-              dependencyCheck additionalArguments: '''
-                  -o "./"
-                  -s "./target/spring-boot-kubernetes-0.0.1-SNAPSHOT.jar"
-                  -f "ALL"
-                  --prettyPrint''', odcInstallation: 'devsecops'
-
-              dependencyCheckPublisher pattern: 'dependency-check-report.xml'
-            }
-        }
+/       }
     }
 }
