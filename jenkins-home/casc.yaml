@@ -43,6 +43,14 @@ tool:
   mavenGlobalConfig:
     globalSettingsProvider: "standard"
     settingsProvider: "standard"
+  dependency-check:
+    installations:
+    - name: "devsecops"
+      properties:
+      - installSource:
+          installers:
+          - dependencyCheckInstaller:
+              id: "7.1.1"
   sonarRunnerInstallation:
     installations:
     - name: "SonarQubeScanner"

@@ -30,7 +30,13 @@ pipeline {
         }
         stage('SCA') {
             steps {
-                echo "Deploying"
+              dependencyCheck additionalArguments: '''
+                  -o "./"
+                  -s "./"
+                  -f "ALL"
+                  --prettyPrint''', odcInstallation: 'devsecops'
+
+              dependencyCheckPublisher pattern: 'dependency-check-report.xml'
             }
         }
     }

@@ -86,6 +86,7 @@ TODO: get documentation
 - [x] replace tokens for one thats not tracked in our commit history
 - [x] create a credential in jenkins with CASC
   - [ ] find a way to pass secrets correctly
+- [ ] add DependencyCheck to Jenkisfile
 
 - [ ] trigger pipeline automatically when there is a new commit on the repo
     - for this should contain the Jenkinsfile and the app code into one repository

@@ -6,6 +6,7 @@ build-timeout:latest
 cloudbees-folder:latest
 configuration-as-code:latest
 credentials-binding:latest
+dependency-check-jenkins-plugin:5.1.2
 docker-commons:latest
 email-ext:latest
 job-dsl:latest
