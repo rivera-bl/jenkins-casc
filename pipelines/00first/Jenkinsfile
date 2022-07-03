@@ -21,13 +21,6 @@ pipeline {
             }
           }
         }
-        # stage("QualityGate") {
-        #   steps {
-        #     timeout(time: 1, unit: 'MINUTES') {
-        #         waitForQualityGate abortPipeline: true
-        #     }
-        #   }
-        # }
         stage('OWASP DependencyCheck') {
             steps {
               dependencyCheck additionalArguments: '', odcInstallation: 'devsecops'
