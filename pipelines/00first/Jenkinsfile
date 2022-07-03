@@ -19,7 +19,17 @@ pipeline {
                   -f "ALL"
                   --prettyPrint''', odcInstallation: 'devsecops'
 
-              dependencyCheckPublisher failedNewHigh: 1, failedTotalHigh: 1, pattern: 'dependency-check-report.xml'
+              dependencyCheckPublisher (
+                failedNewHigh: 1,
+                failedTotalHigh: 1,
+                pattern: 'dependency-check-report.xml'
+              )
+
+             if (currentBuild.result == 'UNSTABLE') {
+                unstable('UNSTABLE: Dependency check')
+              } else if (currentBuild.result == 'FAILURE') {
+                error('FAILED: Dependency check')
+              }
             }
         }
         stage('SonarCloud') {
@@ -37,12 +47,12 @@ pipeline {
             }
           }
         }
-//      stage("QualityGate") {
-//          steps {
-//              timeout(time: 1, unit: 'MINUTES') {
-//                  waitForQualityGate abortPipeline: true
-//              }
-//          }
-//      }
+        stage("QualityGate") {
+            steps {
+                timeout(time: 1, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
     }
 }
